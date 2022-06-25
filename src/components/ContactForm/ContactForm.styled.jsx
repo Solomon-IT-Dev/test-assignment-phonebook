@@ -16,7 +16,7 @@ export const FormInputLabel = styled.label`
   margin-bottom: 20px;
   font-size: 16px;
   text-transform: uppercase;
-  letter-spacing: 4px;
+  letter-spacing: 1px;
 `;
 
 export const FormInput = styled.input`
@@ -27,16 +27,15 @@ export const FormInput = styled.input`
   border: 2px solid #3498db;
   border-radius: 5px;
   background-color: ghostwhite;
-  transition: all 250ms ease-in-out;
+  transition: all 200ms ease-in-out;
 
   :hover,
   :focus {
-    background-color: #39b0ff;
+    border: 2px solid #39b0ff;
   }
 `;
 
 export const FormSubmitBtn = styled.button`
-  display: inline-block;
   width: 160px;
   height: 50px;
   margin: 0 auto;
@@ -47,7 +46,7 @@ export const FormSubmitBtn = styled.button`
   background-color: #3498db;
   color: white;
   box-shadow: none;
-  transition: all 250ms ease-in-out;
+  transition: all 200ms ease-in-out;
 
   :hover,
   :focus {

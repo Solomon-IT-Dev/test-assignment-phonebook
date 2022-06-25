@@ -37,7 +37,7 @@ export const CloseButton = styled.button`
   border-radius: 50%;
   color: #232323;
   background: #ffffff61;
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 200ms ease-in-out;
 
   :hover,
   :focus {

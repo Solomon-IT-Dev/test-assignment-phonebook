@@ -20,7 +20,7 @@ export const ContactItemNum = styled.a`
   margin-left: auto;
   font-size: 18px;
   text-decoration: none;
-  transition: all 250ms ease-in-out;
+  transition: all 200ms ease-in-out;
 
   :hover,
   :focus {
@@ -36,7 +36,7 @@ export const DeleteBtn = styled.button`
   color: #3498db;
   background-color: transparent;
   border: none;
-  transition: all 250ms ease-in-out;
+  transition: all 200ms ease-in-out;
 
   :hover,
   :focus {
@@ -45,5 +45,16 @@ export const DeleteBtn = styled.button`
 
   :disabled {
     color: #4e95c4;
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    animation: spin 1s linear 0s infinite;
   }
 `;
