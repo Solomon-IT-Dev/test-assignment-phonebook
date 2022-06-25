@@ -22,9 +22,9 @@ export default function App() {
       <Container>
         <AppName title="Phone book" />
         <AppContentLayout>
+          <Filter />
           <ContactForm />
           <SectionName title="Contacts" />
-          <Filter />
           <ContactList />
           <ToastContainer />
         </AppContentLayout>
