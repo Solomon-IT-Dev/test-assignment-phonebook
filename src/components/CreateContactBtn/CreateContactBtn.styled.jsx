@@ -6,14 +6,14 @@ export const CreateWrapper = styled.div`
 `;
 
 export const CreateBtn = styled.button`
-  width: 50px;
-  height: 50px;
-  margin: 0;
+  width: 48px;
+  height: 48px;
+  margin: 0 0 0 20px;
   padding: 0;
   border: none;
   border-radius: 50px;
   background-color: #3498db;
-  color: #232323;
+  color: #ffffff;
   box-shadow: none;
   transition: all 200ms ease-in-out;
 
@@ -25,9 +25,9 @@ export const CreateBtn = styled.button`
 `;
 
 export const BtnMessage = styled.span`
-  font-size: 18px;
-  line-height: 1, 2;
+  margin-left: 10px;
+  font-size: 24px;
+  line-height: 1.2;
   letter-spacing: 1px;
-  margin-left: 10xp;
-  color: #232323;
+  color: #a9a9a9;
 `;

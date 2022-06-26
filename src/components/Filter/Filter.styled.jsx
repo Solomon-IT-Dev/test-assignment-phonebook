@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const FilterInput = styled.input`
   width: 360px;
-  margin: 20px auto;
+  margin: 10px auto 20px;
   padding: 6px 14px;
   font-size: 20px;
   border: 2px solid #3498db;

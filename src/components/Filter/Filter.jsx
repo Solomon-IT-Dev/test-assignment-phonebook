@@ -13,7 +13,7 @@ export default function Filter() {
   return (
     <FilterInput
       type="text"
-      placeholder="Search field for contacts"
+      placeholder="Search..."
       value={filterValue}
       onChange={onFilterChange}
     />

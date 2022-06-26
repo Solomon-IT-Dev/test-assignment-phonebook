@@ -26,14 +26,13 @@ export default function App() {
           <CreateContactBtn onOpen={toggleModal} />
           <SectionName title="Contacts" />
           <Filter />
-          <ContactForm />
           <ContactList />
           <ToastContainer />
         </AppContentLayout>
       </Container>
       {showModal && (
         <Modal onClose={toggleModal}>
-          <h1>TEMP</h1>
+          <ContactForm />
         </Modal>
       )}
     </>
