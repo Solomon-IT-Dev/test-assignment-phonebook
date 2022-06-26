@@ -38,7 +38,7 @@ export default function ContactForm({ onSubmit }) {
   };
 
   const onAvatarChange = evt => {
-    setPhone(evt.currentTarget.value);
+    setAvatar(evt.currentTarget.value);
   };
 
   const formReset = () => {
