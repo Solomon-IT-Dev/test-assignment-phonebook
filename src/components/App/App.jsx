@@ -32,7 +32,7 @@ export default function App() {
       </Container>
       {showModal && (
         <Modal onClose={toggleModal}>
-          <ContactForm />
+          <ContactForm onSubmit={toggleModal} />
         </Modal>
       )}
     </>

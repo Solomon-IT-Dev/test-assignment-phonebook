@@ -3,11 +3,7 @@ import styled from '@emotion/styled';
 export const ContactSubmitForm = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  border: 1px solid darkgray;
-  border-radius: 2px;
-  background-color: white;
-  box-shadow: 0px 2px 10px -3px;
+  margin: 15px 0;
 `;
 
 export const FormInputLabel = styled.label`

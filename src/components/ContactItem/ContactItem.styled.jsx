@@ -4,11 +4,10 @@ export const ContactItemWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 420px;
+  width: 640px;
   height: 50px;
   border: 1px solid darkgray;
   border-radius: 5px;
-  background-color: white;
 `;
 
 export const ContactItemName = styled.p`

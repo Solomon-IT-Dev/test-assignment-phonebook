@@ -4,6 +4,7 @@ import {
   useAddContactMutation,
 } from 'services/phoneBookApi';
 import { nanoid } from '@reduxjs/toolkit';
+import PropTypes from 'prop-types';
 import {
   showInfoMessage,
   showSuccessMessage,
@@ -16,7 +17,7 @@ import {
   FormSubmitBtn,
 } from './ContactForm.styled';
 
-export default function ContactForm() {
+export default function ContactForm({ onSubmit }) {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
 
@@ -42,18 +43,20 @@ export default function ContactForm() {
   const onContactFormSubmit = async evt => {
     evt.preventDefault();
 
-    if (
-      contacts.find(
-        contact =>
-          contact.name.toLowerCase() === name.toLowerCase() &&
-          contact.phone === phone
-      )
-    ) {
+    const contactDuplicate = contacts.find(
+      contact =>
+        contact.name.toLowerCase() === name.toLowerCase() &&
+        contact.phone === phone
+    );
+
+    if (contactDuplicate) {
       showInfoMessage('This contact is already in your phonebook');
       return;
     }
 
-    if (contacts.find(contact => contact.phone === phone)) {
+    const phoneDuplicate = contacts.find(contact => contact.phone === phone);
+
+    if (phoneDuplicate) {
       showInfoMessage('This phone number is already in your phonebook');
       return;
     }
@@ -65,6 +68,7 @@ export default function ContactForm() {
 
     try {
       await addContact(newContact);
+      onSubmit();
       showSuccessMessage('New contact has been added in your phonebook');
     } catch (error) {
       console.log(error.message);
@@ -110,3 +114,7 @@ export default function ContactForm() {
     </ContactSubmitForm>
   );
 }
+
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

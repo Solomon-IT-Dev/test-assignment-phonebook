@@ -28,20 +28,20 @@ export const ModalContainer = styled.div`
 
 export const CloseButton = styled.button`
   position: absolute;
-  top: 18px;
-  right: 25px;
+  top: 10px;
+  right: 15px;
   width: 35px;
   height: 35px;
   padding: 0;
   border: none;
   border-radius: 50%;
   color: #232323;
-  background: #ffffff61;
+  background: none;
   transition: all 200ms ease-in-out;
 
   :hover,
   :focus {
     color: #39b0ff;
-    background-color: #ffffffba;
+    background-color: #a3a3a830;
   }
 `;
