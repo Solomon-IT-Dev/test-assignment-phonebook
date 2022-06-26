@@ -81,7 +81,7 @@ export default function ContactList() {
       ) : (
         <>
           <NoContactsText>
-            There are no contacts in your phonebook
+            There are no contacts in your phone book
           </NoContactsText>
         </>
       )}

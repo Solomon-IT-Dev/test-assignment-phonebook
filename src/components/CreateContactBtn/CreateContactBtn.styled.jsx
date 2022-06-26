@@ -29,5 +29,5 @@ export const BtnMessage = styled.span`
   font-size: 24px;
   line-height: 1.2;
   letter-spacing: 1px;
-  color: #a9a9a9;
+  color: #626365;
 `;

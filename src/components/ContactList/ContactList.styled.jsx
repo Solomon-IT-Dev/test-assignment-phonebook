@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const TotalContactsText = styled.p`
   margin: 0 auto;
-  color: #a9a9a9;
+  color: #626365;
   font-size: 18px;
 `;
 
@@ -25,11 +25,11 @@ export const ListElement = styled.li`
 `;
 
 export const LoaderItem = styled.p`
-  margin: 0 auto;
+  margin: 20px auto;
   text-align: center;
   font-size: 24px;
   letter-spacing: 2px;
-  color: #a9a9a9;
+  color: #626365;
 `;
 
 export const NoMatchesText = styled.p`
@@ -50,12 +50,13 @@ export const NoContactsText = styled.p`
 `;
 
 export const FetchErrorText = styled.p`
-  margin: 20px auto;
+  margin: 50px auto 20px;
   text-align: center;
   font-size: 20px;
   font-weight: 500;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
+  color: #ff3939;
 `;
 
 export const RefetchBtn = styled.button`
