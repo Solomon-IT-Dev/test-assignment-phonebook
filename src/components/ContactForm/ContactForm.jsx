@@ -20,14 +20,14 @@ import {
 export default function ContactForm({ onSubmit }) {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const [avatar, setAvatar] = useState('');
+  const [avatarURL, setAvatarURL] = useState('');
 
   const { data: contacts } = useGetAllContactsQuery();
   const [addContact, { isLoading: isCreating }] = useAddContactMutation();
 
   const nameInputId = nanoid();
   const phoneInputId = nanoid();
-  const avatarInputId = nanoid();
+  const avatarURLInputId = nanoid();
 
   const onNameChange = evt => {
     setName(evt.currentTarget.value);
@@ -37,14 +37,14 @@ export default function ContactForm({ onSubmit }) {
     setPhone(evt.currentTarget.value);
   };
 
-  const onAvatarChange = evt => {
-    setAvatar(evt.currentTarget.value);
+  const onAvatarURLChange = evt => {
+    setAvatarURL(evt.currentTarget.value);
   };
 
   const formReset = () => {
     setName('');
     setPhone('');
-    setAvatar('');
+    setAvatarURL('');
   };
 
   const onContactFormSubmit = async evt => {
@@ -71,7 +71,7 @@ export default function ContactForm({ onSubmit }) {
     const newContact = {
       name,
       phone,
-      avatar,
+      avatarURL,
     };
 
     try {
@@ -116,17 +116,17 @@ export default function ContactForm({ onSubmit }) {
           required
         />
       </FormInputLabel>
-      <FormInputLabel htmlFor={avatarInputId}>
+      <FormInputLabel htmlFor={avatarURLInputId}>
         Avatar URL
         <FormInput
           type="text"
-          name="avatar"
+          name="avatarURL"
           placeholder="Put URL of avatar"
           pattern="(https?:\/\/.*\.(?:png|jpg|jpeg|gif|svg|webp))"
           title="Avatar URL must contain link to image with format such as jpg, jpeg, png, webp, svg or gif"
-          value={avatar}
-          onChange={onAvatarChange}
-          id={avatarInputId}
+          value={avatarURL}
+          onChange={onAvatarURLChange}
+          id={avatarURLInputId}
         />
       </FormInputLabel>
       <FormSubmitBtn type="submit" disabled={isCreating}>
