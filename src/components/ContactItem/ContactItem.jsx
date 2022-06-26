@@ -46,7 +46,7 @@ export default function ContactItem({ id, name, phone, avatarURL }) {
         {avatarURL ? (
           <Avatar src={avatarURL} alt="Contact avatar" />
         ) : (
-          <IconContext.Provider value={{ size: '3.5em' }}>
+          <IconContext.Provider value={{ size: '3em' }}>
             <FaMailchimp />
           </IconContext.Provider>
         )}

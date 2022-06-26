@@ -5,18 +5,22 @@ export const ContactItemWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   width: 640px;
-  height: 80px;
+  height: 72px;
   border: 1px solid darkgray;
   border-radius: 5px;
 `;
 
 export const ContactAvatarWrapper = styled.div`
-  margin-right: 15px;
+  width: 50px;
+  height: 50px;
+  margin-left: 20px;
+  border-radius: 50%;
+  border: 1px solid gray;
+  overflow: hidden;
 `;
 
 export const Avatar = styled.img`
-  width: 50px;
-  height: 50px;
+  object-fit: cover;
 `;
 
 export const ContactItemName = styled.p`
@@ -77,7 +81,7 @@ export const ContactItemNum = styled.a`
 export const EditBtn = styled.button`
   height: 27px;
   padding: 0;
-  margin: 0 20px 0 50px;
+  margin-left: 80px;
   color: #3498db;
   background-color: transparent;
   border: none;
@@ -92,7 +96,7 @@ export const EditBtn = styled.button`
 export const DeleteBtn = styled.button`
   height: 27px;
   padding: 0;
-  margin: 0 20px 0 50px;
+  margin: 0 20px 0 40px;
   color: #3498db;
   background-color: transparent;
   border: none;
