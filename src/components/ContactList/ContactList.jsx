@@ -68,9 +68,14 @@ export default function ContactList() {
           </TotalContactsText>
           <PhonebookList>
             {visibleContacts.length ? (
-              visibleContacts.map(({ id, name, phone }) => (
+              visibleContacts.map(({ id, name, phone, avatarURL }) => (
                 <ListElement key={id}>
-                  <ContactItem id={id} name={name} phone={phone} />
+                  <ContactItem
+                    id={id}
+                    name={name}
+                    phone={phone}
+                    avatarURL={avatarURL}
+                  />
                 </ListElement>
               ))
             ) : (
@@ -85,6 +90,7 @@ export default function ContactList() {
           </NoContactsText>
         </>
       )}
+
       {isError && (
         <>
           <FetchErrorText>Fetch error! Refetch contacts</FetchErrorText>

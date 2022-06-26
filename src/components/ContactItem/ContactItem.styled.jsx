@@ -5,9 +5,18 @@ export const ContactItemWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   width: 640px;
-  height: 50px;
+  height: 80px;
   border: 1px solid darkgray;
   border-radius: 5px;
+`;
+
+export const ContactAvatarWrapper = styled.div`
+  margin-right: 15px;
+`;
+
+export const Avatar = styled.img`
+  width: 50px;
+  height: 50px;
 `;
 
 export const ContactItemName = styled.p`
