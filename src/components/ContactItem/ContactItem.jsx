@@ -4,10 +4,10 @@ import { showSuccessMessage, showErrorMessage } from 'utils/notifications';
 import {
   FaTrashAlt,
   FaSpinner,
-  FaStar,
+  // FaStar,
   // FaRegStar,
   FaUserEdit,
-  FaExternalLinkAlt,
+  // FaExternalLinkAlt,
   FaMailchimp,
 } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
@@ -17,8 +17,8 @@ import {
   Avatar,
   ContactItemName,
   ContactItemNum,
-  MoreInfoBtn,
-  FavoriteBtn,
+  // MoreInfoBtn,
+  // FavoriteBtn,
   EditBtn,
   DeleteBtn,
 } from './ContactItem.styled';
@@ -54,7 +54,7 @@ export default function ContactItem({ id, name, phone, avatarURL }) {
 
       <ContactItemName>{name}</ContactItemName>
       <ContactItemNum href={`tel:${phone}`}>{phone}</ContactItemNum>
-
+      {/* 
       <MoreInfoBtn
         type="button"
         // onClick={() => onContactDelete(id, name)}
@@ -63,18 +63,18 @@ export default function ContactItem({ id, name, phone, avatarURL }) {
         <IconContext.Provider value={{ size: '2em' }}>
           <FaExternalLinkAlt />
         </IconContext.Provider>
-      </MoreInfoBtn>
+      </MoreInfoBtn> */}
 
-      <FavoriteBtn
+      {/* <FavoriteBtn
         type="button"
-        // onClick={() => onContactDelete(id, name)}
-        // disabled={isDeleting}
+        onClick={() => onContactDelete(id, name)}
+        disabled={isDeleting}
         aria-label="Mark favorite"
       >
         <IconContext.Provider value={{ size: '2em' }}>
           <FaStar />
         </IconContext.Provider>
-      </FavoriteBtn>
+      </FavoriteBtn> */}
 
       <EditBtn
         type="button"

@@ -36,8 +36,60 @@ export const ContactItemNum = styled.a`
   }
 `;
 
+// export const MoreInfoBtn = styled.button`
+//   height: 27px;
+//   padding: 0;
+//   margin: 0 20px 0 50px;
+//   color: #3498db;
+//   background-color: transparent;
+//   border: none;
+//   transition: all 200ms ease-in-out;
+
+//   :hover,
+//   :focus {
+//     color: #39b0ff;
+//   }
+
+//   :disabled {
+//     color: #4e95c4;
+//   }
+// `;
+
+// export const FavoriteBtn = styled.button`
+//   height: 27px;
+//   padding: 0;
+//   margin: 0 20px 0 50px;
+//   color: #3498db;
+//   background-color: transparent;
+//   border: none;
+//   transition: all 200ms ease-in-out;
+
+//   :hover,
+//   :focus {
+//     color: #ffea00;
+//   }
+
+//   :disabled {
+//     color: #4e95c4;
+//   }
+// `;
+
+export const EditBtn = styled.button`
+  height: 27px;
+  padding: 0;
+  margin: 0 20px 0 50px;
+  color: #3498db;
+  background-color: transparent;
+  border: none;
+  transition: all 200ms ease-in-out;
+
+  :hover,
+  :focus {
+    color: #39b0ff;
+  }
+`;
+
 export const DeleteBtn = styled.button`
-  display: inline-block;
   height: 27px;
   padding: 0;
   margin: 0 20px 0 50px;

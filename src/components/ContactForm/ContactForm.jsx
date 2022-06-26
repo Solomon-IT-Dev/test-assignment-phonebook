@@ -20,12 +20,14 @@ import {
 export default function ContactForm({ onSubmit }) {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [avatar, setAvatar] = useState('');
 
   const { data: contacts } = useGetAllContactsQuery();
   const [addContact, { isLoading: isCreating }] = useAddContactMutation();
 
   const nameInputId = nanoid();
   const phoneInputId = nanoid();
+  const avatarInputId = nanoid();
 
   const onNameChange = evt => {
     setName(evt.currentTarget.value);
@@ -35,9 +37,14 @@ export default function ContactForm({ onSubmit }) {
     setPhone(evt.currentTarget.value);
   };
 
+  const onAvatarChange = evt => {
+    setPhone(evt.currentTarget.value);
+  };
+
   const formReset = () => {
     setName('');
     setPhone('');
+    setAvatar('');
   };
 
   const onContactFormSubmit = async evt => {
@@ -64,6 +71,7 @@ export default function ContactForm({ onSubmit }) {
     const newContact = {
       name,
       phone,
+      avatar,
     };
 
     try {
@@ -106,6 +114,19 @@ export default function ContactForm({ onSubmit }) {
           onChange={onPhoneChange}
           id={phoneInputId}
           required
+        />
+      </FormInputLabel>
+      <FormInputLabel htmlFor={avatarInputId}>
+        Avatar URL
+        <FormInput
+          type="text"
+          name="avatar"
+          placeholder="Put URL of avatar"
+          pattern="(https?:\/\/.*\.(?:png|jpg|jpeg|gif|svg|webp))"
+          title="Avatar URL must contain link to image with format such as jpg, jpeg, png, webp, svg or gif"
+          value={avatar}
+          onChange={onAvatarChange}
+          id={avatarInputId}
         />
       </FormInputLabel>
       <FormSubmitBtn type="submit" disabled={isCreating}>
