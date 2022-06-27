@@ -21,5 +21,5 @@ export default function CreateContactBtn({ onOpen }) {
 }
 
 CreateContactBtn.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onOpen: PropTypes.func.isRequired,
 };

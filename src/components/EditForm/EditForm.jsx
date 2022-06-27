@@ -68,21 +68,15 @@ export default function EditForm({
       return;
     }
 
-    const phoneDuplicate = contacts.find(contact => contact.phone === newPhone);
-
-    if (phoneDuplicate) {
-      showInfoMessage('This phone number is already in your phone book');
-      return;
-    }
-
     const updatedContact = {
-      newName,
-      newPhone,
-      newAvatarURL,
+      id,
+      name: newName,
+      phone: newPhone,
+      avatarURL: newAvatarURL,
     };
 
     try {
-      await updateContact(id, updatedContact);
+      await updateContact(updatedContact);
       handleModalClose();
       showSuccessMessage('Contact is successfully updated');
     } catch (error) {
