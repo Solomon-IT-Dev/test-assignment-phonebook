@@ -82,7 +82,7 @@ export default function ContactItem({ id, name, phone, avatarURL }) {
 
         <EditBtn
           type="button"
-          // onClick={() => onContactDelete(id, name)}
+          onClick={toggleEditModal}
           aria-label="Edit contact"
         >
           <IconContext.Provider value={{ size: '2em' }}>
