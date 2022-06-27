@@ -24,6 +24,15 @@ export const phoneBookApi = createApi({
       invalidatesTags: ['Contact'],
     }),
 
+    updateContact: builder.mutation({
+      query: (contactId, updatedContact) => ({
+        url: `/contacts/${contactId}`,
+        method: 'PUT',
+        body: updatedContact,
+      }),
+      invalidatesTags: ['Contact'],
+    }),
+
     deleteContact: builder.mutation({
       query: contactId => ({
         url: `/contacts/${contactId}`,
@@ -37,5 +46,6 @@ export const phoneBookApi = createApi({
 export const {
   useGetAllContactsQuery,
   useAddContactMutation,
+  useUpdateContactMutation,
   useDeleteContactMutation,
 } = phoneBookApi;

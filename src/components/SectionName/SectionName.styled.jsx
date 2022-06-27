@@ -5,5 +5,5 @@ export const SubTitle = styled.h2`
   font-size: 28px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: rgb(52, 152, 219);
+  color: #3498db;
 `;

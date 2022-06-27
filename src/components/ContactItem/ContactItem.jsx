@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useDeleteContactMutation } from 'services/phoneBookApi';
 import { useModal } from 'hooks/useModal';
 import Modal from 'components/Modal';
+import EditForm from 'components/EditForm';
 import { showSuccessMessage, showErrorMessage } from 'utils/notifications';
 import {
   FaTrashAlt,
@@ -33,7 +34,7 @@ export default function ContactItem({ id, name, phone, avatarURL }) {
     try {
       await deleteContact(contactId);
       showSuccessMessage(
-        `"${contactName}" has been deleted from your phonebook`
+        `"${contactName}" has been deleted from your phone book`
       );
     } catch (error) {
       console.log(error.message);
@@ -104,9 +105,13 @@ export default function ContactItem({ id, name, phone, avatarURL }) {
 
       {showEditModal && (
         <Modal onClose={toggleEditModal}>
-          <p>
-            {id}, {name}, {phone}, {avatarURL}
-          </p>
+          <EditForm
+            handleModalClose={toggleEditModal}
+            id={id}
+            name={name}
+            phone={phone}
+            avatarURL={avatarURL}
+          />
         </Modal>
       )}
     </>
