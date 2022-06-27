@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import { useDeleteContactMutation } from 'services/phoneBookApi';
+import { useModal } from 'hooks/useModal';
+import Modal from 'components/Modal';
 import { showSuccessMessage, showErrorMessage } from 'utils/notifications';
 import {
   FaTrashAlt,
@@ -25,6 +27,7 @@ import {
 
 export default function ContactItem({ id, name, phone, avatarURL }) {
   const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
+  const [showEditModal, toggleEditModal] = useModal();
 
   const onContactDelete = async (contactId, contactName) => {
     try {
@@ -41,20 +44,21 @@ export default function ContactItem({ id, name, phone, avatarURL }) {
   };
 
   return (
-    <ContactItemWrapper>
-      <ContactAvatarWrapper>
-        {avatarURL ? (
-          <Avatar src={avatarURL} alt="Contact avatar" />
-        ) : (
-          <IconContext.Provider value={{ size: '3em' }}>
-            <FaMailchimp />
-          </IconContext.Provider>
-        )}
-      </ContactAvatarWrapper>
+    <>
+      <ContactItemWrapper>
+        <ContactAvatarWrapper>
+          {avatarURL ? (
+            <Avatar src={avatarURL} alt="Contact avatar" />
+          ) : (
+            <IconContext.Provider value={{ size: '3em' }}>
+              <FaMailchimp />
+            </IconContext.Provider>
+          )}
+        </ContactAvatarWrapper>
 
-      <ContactItemName>{name}</ContactItemName>
-      <ContactItemNum href={`tel:${phone}`}>{phone}</ContactItemNum>
-      {/* 
+        <ContactItemName>{name}</ContactItemName>
+        <ContactItemNum href={`tel:${phone}`}>{phone}</ContactItemNum>
+        {/* 
       <MoreInfoBtn
         type="button"
         // onClick={() => onContactDelete(id, name)}
@@ -65,7 +69,7 @@ export default function ContactItem({ id, name, phone, avatarURL }) {
         </IconContext.Provider>
       </MoreInfoBtn> */}
 
-      {/* <FavoriteBtn
+        {/* <FavoriteBtn
         type="button"
         onClick={() => onContactDelete(id, name)}
         disabled={isDeleting}
@@ -76,27 +80,36 @@ export default function ContactItem({ id, name, phone, avatarURL }) {
         </IconContext.Provider>
       </FavoriteBtn> */}
 
-      <EditBtn
-        type="button"
-        // onClick={() => onContactDelete(id, name)}
-        aria-label="Edit contact"
-      >
-        <IconContext.Provider value={{ size: '2em' }}>
-          <FaUserEdit />
-        </IconContext.Provider>
-      </EditBtn>
+        <EditBtn
+          type="button"
+          // onClick={() => onContactDelete(id, name)}
+          aria-label="Edit contact"
+        >
+          <IconContext.Provider value={{ size: '2em' }}>
+            <FaUserEdit />
+          </IconContext.Provider>
+        </EditBtn>
 
-      <DeleteBtn
-        type="button"
-        onClick={() => onContactDelete(id, name)}
-        disabled={isDeleting}
-        aria-label="Delete contact"
-      >
-        <IconContext.Provider value={{ size: '2em' }}>
-          {isDeleting ? <FaSpinner /> : <FaTrashAlt />}
-        </IconContext.Provider>
-      </DeleteBtn>
-    </ContactItemWrapper>
+        <DeleteBtn
+          type="button"
+          onClick={() => onContactDelete(id, name)}
+          disabled={isDeleting}
+          aria-label="Delete contact"
+        >
+          <IconContext.Provider value={{ size: '2em' }}>
+            {isDeleting ? <FaSpinner /> : <FaTrashAlt />}
+          </IconContext.Provider>
+        </DeleteBtn>
+      </ContactItemWrapper>
+
+      {showEditModal && (
+        <Modal onClose={toggleEditModal}>
+          <p>
+            {id}, {name}, {phone}, {avatarURL}
+          </p>
+        </Modal>
+      )}
+    </>
   );
 }
 

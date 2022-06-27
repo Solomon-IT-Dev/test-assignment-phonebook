@@ -63,7 +63,7 @@ export default function ContactList() {
       ) : totalContactsAmount() > 0 ? (
         <>
           <TotalContactsText>
-            Contacts amount:{' '}
+            Contacts in phone book:{' '}
             <TotalContactsNum>{totalContactsAmount()}</TotalContactsNum>
           </TotalContactsText>
           <PhonebookList>

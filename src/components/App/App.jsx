@@ -1,4 +1,3 @@
-// import { useState } from 'react';
 import { useModal } from 'hooks/useModal';
 import Container from 'components/Container';
 import AppName from 'components/AppName';
@@ -14,12 +13,6 @@ import { AppContentLayout } from './App.styled';
 
 export default function App() {
   const [showCreateModal, toggleCreateModal] = useModal();
-
-  // const [showCreateModal, setShowCreateModal] = useState(false);
-
-  // const toggleCreateModal = () => {
-  //   setShowCreateModal(showCreateModal => !showCreateModal);
-  // };
 
   return (
     <>
