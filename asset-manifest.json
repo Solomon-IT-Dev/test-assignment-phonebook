@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/test-assignment-phonebook/static/css/main.86e33091.css",
-    "main.js": "/test-assignment-phonebook/static/js/main.25bb019a.js",
+    "main.js": "/test-assignment-phonebook/static/js/main.a1b76aea.js",
     "index.html": "/test-assignment-phonebook/index.html",
     "main.86e33091.css.map": "/test-assignment-phonebook/static/css/main.86e33091.css.map",
-    "main.25bb019a.js.map": "/test-assignment-phonebook/static/js/main.25bb019a.js.map"
+    "main.a1b76aea.js.map": "/test-assignment-phonebook/static/js/main.a1b76aea.js.map"
   },
   "entrypoints": [
     "static/css/main.86e33091.css",
-    "static/js/main.25bb019a.js"
+    "static/js/main.a1b76aea.js"
   ]
 }
