@@ -33,7 +33,7 @@ export const LoaderItem = styled.p`
 `;
 
 export const NoMatchesText = styled.p`
-  margin: 20px auto;
+  margin: 25.5px auto;
   text-align: center;
   font-size: 20px;
   font-weight: 500;

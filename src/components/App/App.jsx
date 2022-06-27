@@ -1,4 +1,5 @@
-import { useState } from 'react';
+// import { useState } from 'react';
+import { useModal } from 'hooks/useModal';
 import Container from 'components/Container';
 import AppName from 'components/AppName';
 import CreateContactBtn from 'components/CreateContactBtn';
@@ -12,27 +13,29 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import { AppContentLayout } from './App.styled';
 
 export default function App() {
-  const [showModal, setShowModal] = useState(false);
+  const [showCreateModal, toggleCreateModal] = useModal();
 
-  const toggleModal = () => {
-    setShowModal(showModal => !showModal);
-  };
+  // const [showCreateModal, setShowCreateModal] = useState(false);
+
+  // const toggleCreateModal = () => {
+  //   setShowCreateModal(showCreateModal => !showCreateModal);
+  // };
 
   return (
     <>
       <Container>
         <AppName title="Phone book" />
         <AppContentLayout>
-          <CreateContactBtn onOpen={toggleModal} />
+          <CreateContactBtn onOpen={toggleCreateModal} />
           <SectionName title="Contacts" />
           <Filter />
           <ContactList />
           <ToastContainer />
         </AppContentLayout>
       </Container>
-      {showModal && (
-        <Modal onClose={toggleModal}>
-          <ContactForm onSubmit={toggleModal} />
+      {showCreateModal && (
+        <Modal onClose={toggleCreateModal}>
+          <ContactForm handleModalClose={toggleCreateModal} />
         </Modal>
       )}
     </>

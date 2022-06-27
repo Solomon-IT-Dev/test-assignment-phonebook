@@ -17,7 +17,7 @@ import {
   FormSubmitBtn,
 } from './ContactForm.styled';
 
-export default function ContactForm({ onSubmit }) {
+export default function ContactForm({ handleModalClose }) {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [avatarURL, setAvatarURL] = useState('');
@@ -76,7 +76,7 @@ export default function ContactForm({ onSubmit }) {
 
     try {
       await addContact(newContact);
-      onSubmit();
+      handleModalClose();
       showSuccessMessage('New contact has been added in your phonebook');
     } catch (error) {
       console.log(error.message);
@@ -137,5 +137,5 @@ export default function ContactForm({ onSubmit }) {
 }
 
 ContactForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
+  handleModalClose: PropTypes.func.isRequired,
 };

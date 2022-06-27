@@ -21,6 +21,7 @@ export const ContactAvatarWrapper = styled.div`
 
 export const Avatar = styled.img`
   object-fit: cover;
+  height: 50px;
 `;
 
 export const ContactItemName = styled.p`
