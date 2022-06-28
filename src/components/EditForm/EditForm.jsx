@@ -60,7 +60,8 @@ export default function EditForm({
     const contactDuplicate = contacts.find(
       contact =>
         contact.name.toLowerCase() === newName.toLowerCase() &&
-        contact.phone === newPhone
+        contact.phone === newPhone &&
+        contact.avatarURL === newAvatarURL
     );
 
     if (contactDuplicate) {
