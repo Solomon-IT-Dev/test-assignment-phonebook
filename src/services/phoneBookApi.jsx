@@ -26,9 +26,9 @@ export const phoneBookApi = createApi({
 
     updateContact: builder.mutation({
       query: updatedContact => {
-        const { contactId } = updatedContact;
+        const { id } = updatedContact;
         return {
-          url: `/contacts/${contactId}`,
+          url: `/contacts/${id}`,
           method: 'PUT',
           body: updatedContact,
         };
