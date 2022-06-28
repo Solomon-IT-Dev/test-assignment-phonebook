@@ -27,9 +27,11 @@ export const ModalContainer = styled.div`
 
   @keyframes open {
     from {
+      opacity: 0;
       transform: translate(-50%, -50%) scale(0.7);
     }
     to {
+      opacity: 1;
       transform: translate(-50%, -50%) rotate(1);
     }
   }
