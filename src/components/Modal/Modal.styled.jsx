@@ -11,6 +11,17 @@ export const Overlay = styled.div`
   align-items: center;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1000;
+
+  @keyframes show {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: show 0.3s ease-in-out 0s;
 `;
 
 export const ModalContainer = styled.div`
