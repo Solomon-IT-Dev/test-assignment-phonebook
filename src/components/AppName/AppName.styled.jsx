@@ -10,12 +10,12 @@ export const MainTitle = styled.h1`
   color: #3498db;
   text-shadow: 12px 14px 12px #000000b0;
 
-  @media (min-width: 576px) and (max-width: 1023px) {
+  @media screen and (min-width: 576px) and (max-width: 1023px) {
     letter-spacing: 26px;
     font-size: 70px;
   }
 
-  @media (min-width: 1024px) {
+  @media screen and (min-width: 1024px) {
     letter-spacing: 32px;
     font-size: 140px;
     line-height: 1.5;
