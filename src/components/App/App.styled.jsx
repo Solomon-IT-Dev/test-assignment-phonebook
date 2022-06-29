@@ -1,5 +1,13 @@
 import styled from '@emotion/styled';
 
+export const AppContainer = styled.div`
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+`;
+
 export const AppContentLayout = styled.div`
   display: flex;
   flex-direction: column;

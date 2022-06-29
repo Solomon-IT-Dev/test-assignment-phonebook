@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { getFilterValue } from 'redux/filter/slice';
-import { useGetAllContactsQuery } from 'services/phoneBookApi';
-import sortContactsByName from 'utils/sortContactsByName';
+import { useGetAllContactsQuery } from 'services/api';
+import { sortContactsByName } from 'helpers/sorting';
 import ContactItem from 'components/ContactItem';
 import { FaRedo } from 'react-icons/fa';
 import { IconContext } from 'react-icons';

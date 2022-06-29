@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { phoneBookApi } from 'services/phoneBookApi';
+import { phoneBookApi } from 'services/api';
 import { filterSlice } from './filter/slice';
 
 export const store = configureStore({

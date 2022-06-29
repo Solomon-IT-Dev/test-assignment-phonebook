@@ -1,15 +1,12 @@
 import { useState } from 'react';
-import {
-  useGetAllContactsQuery,
-  useAddContactMutation,
-} from 'services/phoneBookApi';
+import { useGetAllContactsQuery, useAddContactMutation } from 'services/api';
 import { nanoid } from '@reduxjs/toolkit';
 import PropTypes from 'prop-types';
 import {
   showInfoMessage,
   showSuccessMessage,
   showErrorMessage,
-} from 'utils/notifications';
+} from 'helpers/notifications';
 import {
   ContactSubmitForm,
   FormName,
@@ -19,9 +16,11 @@ import {
 } from './ContactForm.styled';
 
 export default function ContactForm({ handleModalClose }) {
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [avatarURL, setAvatarURL] = useState('');
+  const [formState, setFormState] = useState({
+    name: '',
+    phone: '',
+    avatarURL: '',
+  });
 
   const { data: contacts } = useGetAllContactsQuery();
   const [addContact, { isLoading: isCreating }] = useAddContactMutation();
@@ -30,22 +29,24 @@ export default function ContactForm({ handleModalClose }) {
   const phoneInputId = nanoid();
   const avatarURLInputId = nanoid();
 
+  const onChange = (name, value) => {
+    setFormState(prevState => ({ ...prevState, [name]: value }));
+  };
+
   const onNameChange = evt => {
-    setName(evt.currentTarget.value);
+    onChange(evt.currentTarget.name, evt.currentTarget.value);
   };
 
   const onPhoneChange = evt => {
-    setPhone(evt.currentTarget.value);
+    onChange(evt.currentTarget.name, evt.currentTarget.value);
   };
 
   const onAvatarURLChange = evt => {
-    setAvatarURL(evt.currentTarget.value);
+    onChange(evt.currentTarget.name, evt.currentTarget.value);
   };
 
   const formReset = () => {
-    setName('');
-    setPhone('');
-    setAvatarURL('');
+    setFormState({});
   };
 
   const onContactFormSubmit = async evt => {
@@ -53,8 +54,8 @@ export default function ContactForm({ handleModalClose }) {
 
     const contactDuplicate = contacts.find(
       contact =>
-        contact.name.toLowerCase() === name.toLowerCase() &&
-        contact.phone === phone
+        contact.name.toLowerCase() === formState.name.toLowerCase() &&
+        contact.phone === formState.phone
     );
 
     if (contactDuplicate) {
@@ -62,7 +63,9 @@ export default function ContactForm({ handleModalClose }) {
       return;
     }
 
-    const phoneDuplicate = contacts.find(contact => contact.phone === phone);
+    const phoneDuplicate = contacts.find(
+      contact => contact.phone === formState.phone
+    );
 
     if (phoneDuplicate) {
       showInfoMessage('This phone number is already in your phone book');
@@ -70,9 +73,9 @@ export default function ContactForm({ handleModalClose }) {
     }
 
     const newContact = {
-      name,
-      phone,
-      avatarURL,
+      name: formState.name,
+      phone: formState.phone,
+      avatarURL: formState.avatarURL,
     };
 
     try {
@@ -80,7 +83,6 @@ export default function ContactForm({ handleModalClose }) {
       handleModalClose();
       showSuccessMessage('New contact has been added in your phone book');
     } catch (error) {
-      console.log(error.message);
       showErrorMessage('Something goes wrong, new contact was not created');
     }
 
@@ -98,7 +100,7 @@ export default function ContactForm({ handleModalClose }) {
           placeholder="Type name (required)"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          value={name}
+          value={formState.name}
           onChange={onNameChange}
           id={nameInputId}
           required
@@ -112,7 +114,7 @@ export default function ContactForm({ handleModalClose }) {
           placeholder="Type number (required)"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          value={phone}
+          value={formState.phone}
           onChange={onPhoneChange}
           id={phoneInputId}
           required
@@ -126,7 +128,7 @@ export default function ContactForm({ handleModalClose }) {
           placeholder="Put URL of avatar"
           pattern="(https?:\/\/.*\.(?:png|jpg|jpeg|gif|svg|webp))"
           title="Avatar URL must contain link to image with format such as jpg, jpeg, png, webp, svg or gif"
-          value={avatarURL}
+          value={formState.avatarURL}
           onChange={onAvatarURLChange}
           id={avatarURLInputId}
         />

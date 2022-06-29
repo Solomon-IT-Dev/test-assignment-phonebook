@@ -1,18 +1,10 @@
 import PropTypes from 'prop-types';
-import { useDeleteContactMutation } from 'services/phoneBookApi';
+import { useDeleteContactMutation } from 'services/api';
 import { useModal } from 'hooks/useModal';
 import Modal from 'components/Modal';
 import EditForm from 'components/EditForm';
-import { showSuccessMessage, showErrorMessage } from 'utils/notifications';
-import {
-  FaTrashAlt,
-  FaSpinner,
-  // FaStar,
-  // FaRegStar,
-  FaUserEdit,
-  // FaExternalLinkAlt,
-  FaMailchimp,
-} from 'react-icons/fa';
+import { showSuccessMessage, showErrorMessage } from 'helpers/notifications';
+import { FaTrashAlt, FaSpinner, FaUserEdit, FaMailchimp } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
 import {
   ContactItemWrapper,
@@ -20,8 +12,6 @@ import {
   Avatar,
   ContactItemName,
   ContactItemNum,
-  // MoreInfoBtn,
-  // FavoriteBtn,
   EditBtn,
   DeleteBtn,
 } from './ContactItem.styled';
@@ -37,7 +27,6 @@ export default function ContactItem({ id, name, phone, avatarURL }) {
         `"${contactName}" has been deleted from your phone book`
       );
     } catch (error) {
-      console.log(error.message);
       showErrorMessage(
         `Something goes wrong, "${contactName}" was not deleted`
       );
@@ -59,27 +48,6 @@ export default function ContactItem({ id, name, phone, avatarURL }) {
 
         <ContactItemName>{name}</ContactItemName>
         <ContactItemNum href={`tel:${phone}`}>{phone}</ContactItemNum>
-        {/* 
-      <MoreInfoBtn
-        type="button"
-        // onClick={() => onContactDelete(id, name)}
-        aria-label="Full contact information"
-      >
-        <IconContext.Provider value={{ size: '2em' }}>
-          <FaExternalLinkAlt />
-        </IconContext.Provider>
-      </MoreInfoBtn> */}
-
-        {/* <FavoriteBtn
-        type="button"
-        onClick={() => onContactDelete(id, name)}
-        disabled={isDeleting}
-        aria-label="Mark favorite"
-      >
-        <IconContext.Provider value={{ size: '2em' }}>
-          <FaStar />
-        </IconContext.Provider>
-      </FavoriteBtn> */}
 
         <EditBtn
           type="button"
