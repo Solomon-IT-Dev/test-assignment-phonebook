@@ -8,6 +8,10 @@ export const ContactItemWrapper = styled.div`
   height: 72px;
   border: 1px solid darkgray;
   border-radius: 5px;
+
+  @media screen and (min-width: 576px) and (max-width: 1023px) {
+    width: 480px;
+  }
 `;
 
 export const ContactAvatarWrapper = styled.div`
@@ -17,6 +21,10 @@ export const ContactAvatarWrapper = styled.div`
   border-radius: 50%;
   border: 1px solid gray;
   overflow: hidden;
+
+  @media screen and (min-width: 576px) and (max-width: 1023px) {
+    margin-left: 15px;
+  }
 `;
 
 export const Avatar = styled.img`
@@ -24,9 +32,26 @@ export const Avatar = styled.img`
   height: 50px;
 `;
 
+export const ContactDataWrapper = styled.div`
+  width: 50px;
+  height: 50px;
+  margin-left: 20px;
+  border-radius: 50%;
+  border: 1px solid gray;
+  overflow: hidden;
+
+  @media screen and (min-width: 576px) and (max-width: 1023px) {
+    margin-left: 15px;
+  }
+`;
+
 export const ContactItemName = styled.p`
   margin-left: 20px;
   font-size: 18px;
+
+  @media screen and (min-width: 576px) and (max-width: 1023px) {
+    margin-left: 10px;
+  }
 `;
 
 export const ContactItemNum = styled.a`
@@ -39,45 +64,10 @@ export const ContactItemNum = styled.a`
   :focus {
     color: #39b0ff;
   }
+  @media screen and (min-width: 576px) and (max-width: 1023px) {
+    margin-left: 15px;
+  }
 `;
-
-// export const MoreInfoBtn = styled.button`
-//   height: 27px;
-//   padding: 0;
-//   margin: 0 20px 0 50px;
-//   color: #3498db;
-//   background-color: transparent;
-//   border: none;
-//   transition: all 200ms ease-in-out;
-
-//   :hover,
-//   :focus {
-//     color: #39b0ff;
-//   }
-
-//   :disabled {
-//     color: #4e95c4;
-//   }
-// `;
-
-// export const FavoriteBtn = styled.button`
-//   height: 27px;
-//   padding: 0;
-//   margin: 0 20px 0 50px;
-//   color: #3498db;
-//   background-color: transparent;
-//   border: none;
-//   transition: all 200ms ease-in-out;
-
-//   :hover,
-//   :focus {
-//     color: #ffea00;
-//   }
-
-//   :disabled {
-//     color: #4e95c4;
-//   }
-// `;
 
 export const EditBtn = styled.button`
   height: 27px;
@@ -87,6 +77,10 @@ export const EditBtn = styled.button`
   background-color: transparent;
   border: none;
   transition: all 200ms ease-in-out;
+
+  @media screen and (min-width: 576px) and (max-width: 1023px) {
+    margin-left: auto;
+  }
 
   :hover,
   :focus {
@@ -102,6 +96,10 @@ export const DeleteBtn = styled.button`
   background-color: transparent;
   border: none;
   transition: all 200ms ease-in-out;
+
+  @media screen and (min-width: 576px) and (max-width: 1023px) {
+    margin: 0 15px 0 20px;
+  }
 
   :hover,
   :focus {
