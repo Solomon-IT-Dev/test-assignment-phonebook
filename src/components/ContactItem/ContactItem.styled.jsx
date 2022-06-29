@@ -4,7 +4,7 @@ export const ContactItemWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 640px;
+  /* width: 640px; */
   height: 72px;
   border: 1px solid darkgray;
   border-radius: 5px;
@@ -12,18 +12,26 @@ export const ContactItemWrapper = styled.div`
   @media screen and (min-width: 576px) and (max-width: 1023px) {
     width: 480px;
   }
+
+  @media screen and (min-width: 1023px) {
+    width: 640px;
+  }
 `;
 
 export const ContactAvatarWrapper = styled.div`
   width: 50px;
   height: 50px;
-  margin-left: 20px;
+  margin-left: 10px;
   border-radius: 50%;
   border: 1px solid gray;
   overflow: hidden;
 
   @media screen and (min-width: 576px) and (max-width: 1023px) {
     margin-left: 15px;
+  }
+
+  @media screen and (min-width: 1023px) {
+    margin-left: 20px;
   }
 `;
 
@@ -33,21 +41,39 @@ export const Avatar = styled.img`
 `;
 
 export const ContactInfoWrapper = styled.div`
-  
-`;
+  margin-left: 10px;
 
-export const ContactItemName = styled.p`
-  margin-left: 20px;
-  font-size: 18px;
+  @media screen and (min-width: 576px) {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+  }
 
   @media screen and (min-width: 576px) and (max-width: 1023px) {
     margin-left: 10px;
   }
+
+  @media screen and (min-width: 1023px) {
+    margin-left: 20px;
+  }
+`;
+
+export const ContactItemName = styled.p`
+  font-size: 16px;
+
+  @media screen and (min-width: 576px) and (max-width: 1023px) {
+    width: 140px;
+    font-size: 17px;
+  }
+
+  @media screen and (min-width: 1023px) {
+    width: 180px;
+    font-size: 18px;
+  }
 `;
 
 export const ContactItemNum = styled.a`
-  margin-left: auto;
-  font-size: 18px;
+  font-size: 16px;
   text-decoration: none;
   transition: all 200ms ease-in-out;
 
@@ -56,22 +82,26 @@ export const ContactItemNum = styled.a`
     color: #39b0ff;
   }
   @media screen and (min-width: 576px) and (max-width: 1023px) {
-    margin-left: 15px;
+    width: 125px;
+    margin-left: 20px;
+    font-size: 17px;
+  }
+
+  @media screen and (min-width: 1023px) {
+    width: 180px;
+    margin-left: 50px;
+    font-size: 18px;
   }
 `;
 
 export const EditBtn = styled.button`
   height: 27px;
   padding: 0;
-  margin-left: 80px;
+  margin-left: auto;
   color: #3498db;
   background-color: transparent;
   border: none;
   transition: all 200ms ease-in-out;
-
-  @media screen and (min-width: 576px) and (max-width: 1023px) {
-    margin-left: auto;
-  }
 
   :hover,
   :focus {
@@ -82,7 +112,7 @@ export const EditBtn = styled.button`
 export const DeleteBtn = styled.button`
   height: 27px;
   padding: 0;
-  margin: 0 20px 0 40px;
+  margin: 0 10px 0 20px;
   color: #3498db;
   background-color: transparent;
   border: none;
@@ -90,6 +120,10 @@ export const DeleteBtn = styled.button`
 
   @media screen and (min-width: 576px) and (max-width: 1023px) {
     margin: 0 15px 0 20px;
+  }
+
+  @media screen and (min-width: 1023px) {
+    margin: 0 20px 0 40px;
   }
 
   :hover,
