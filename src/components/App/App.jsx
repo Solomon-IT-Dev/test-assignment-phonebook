@@ -1,10 +1,10 @@
 import { useModal } from 'hooks/useModal';
 import AppName from 'components/AppName';
-import CreateContactBtn from 'components/CreateContactBtn';
+import { CreateContactBtn } from 'components/Buttons';
 import Filter from 'components/Filter';
 import ContactList from 'components/ContactList';
 import Modal from 'components/Modal';
-import ContactForm from 'components/ContactForm';
+import ContactForm from 'components/Forms';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { AppContainer, AppContentLayout } from './App.styled';

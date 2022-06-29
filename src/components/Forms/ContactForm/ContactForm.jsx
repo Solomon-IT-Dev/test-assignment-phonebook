@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useGetAllContactsQuery, useUpdateContactMutation } from 'services/api';
+import { useGetAllContactsQuery, useAddContactMutation } from 'services/api';
 import { nanoid } from '@reduxjs/toolkit';
 import PropTypes from 'prop-types';
 import {
@@ -7,25 +7,23 @@ import {
   showSuccessMessage,
   showErrorMessage,
 } from 'helpers/notifications';
+import { FormBtn } from 'components/Buttons';
 import {
   ContactSubmitForm,
   FormName,
   FormInputLabel,
   FormInput,
-  FormSubmitBtn,
-} from './EditForm.styled';
+} from './ContactForm.styled';
 
-export default function EditForm({
-  handleModalClose,
-  id,
-  name,
-  phone,
-  avatarURL,
-}) {
-  const [formState, setFormState] = useState({ name, phone, avatarURL });
+export function ContactForm({ handleModalClose }) {
+  const [formState, setFormState] = useState({
+    name: '',
+    phone: '',
+    avatarURL: '',
+  });
 
   const { data: contacts } = useGetAllContactsQuery();
-  const [updateContact, { isLoading: isEditing }] = useUpdateContactMutation();
+  const [addContact, { isLoading: isCreating }] = useAddContactMutation();
 
   const nameInputId = nanoid();
   const phoneInputId = nanoid();
@@ -57,8 +55,7 @@ export default function EditForm({
     const contactDuplicate = contacts.find(
       contact =>
         contact.name.toLowerCase() === formState.name.toLowerCase() &&
-        contact.phone === formState.phone &&
-        contact.avatarURL === formState.avatarURL
+        contact.phone === formState.phone
     );
 
     if (contactDuplicate) {
@@ -66,19 +63,27 @@ export default function EditForm({
       return;
     }
 
-    const updatedContact = {
-      id,
+    const phoneDuplicate = contacts.find(
+      contact => contact.phone === formState.phone
+    );
+
+    if (phoneDuplicate) {
+      showInfoMessage('This phone number is already in your phone book');
+      return;
+    }
+
+    const newContact = {
       name: formState.name,
       phone: formState.phone,
       avatarURL: formState.avatarURL,
     };
 
     try {
-      await updateContact(updatedContact);
+      await addContact(newContact);
       handleModalClose();
-      showSuccessMessage('Contact is successfully updated');
+      showSuccessMessage('New contact has been added in your phone book');
     } catch (error) {
-      showErrorMessage('Something goes wrong, contact was not updated');
+      showErrorMessage('Something goes wrong, new contact was not created');
     }
 
     formReset();
@@ -86,7 +91,7 @@ export default function EditForm({
 
   return (
     <ContactSubmitForm onSubmit={onContactFormSubmit}>
-      <FormName>Edit</FormName>
+      <FormName>Create</FormName>
       <FormInputLabel htmlFor={nameInputId}>
         Name
         <FormInput
@@ -128,17 +133,15 @@ export default function EditForm({
           id={avatarURLInputId}
         />
       </FormInputLabel>
-      <FormSubmitBtn type="submit" disabled={isEditing}>
-        {isEditing ? 'Editing...' : 'Edit contact'}
-      </FormSubmitBtn>
+      <FormBtn
+        activeName="Add contact"
+        disabledName="Adding..."
+        isDisabled={isCreating}
+      />
     </ContactSubmitForm>
   );
 }
 
-EditForm.propTypes = {
+ContactForm.propTypes = {
   handleModalClose: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired,
-  avatarURL: PropTypes.string,
 };

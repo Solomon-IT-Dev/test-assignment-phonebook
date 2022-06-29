@@ -56,11 +56,26 @@ export default function ContactList() {
 
   const visibleContacts = getVisibleContacts();
 
+  if (isError) {
+    return (
+      <>
+        <FetchErrorText>Fetch error! Refetch contacts</FetchErrorText>
+        <RefetchBtn type="button" onClick={() => refetch()}>
+          <IconContext.Provider value={{ size: '5em' }}>
+            <FaRedo />
+          </IconContext.Provider>
+        </RefetchBtn>
+      </>
+    );
+  }
+
+  if (isLoading) {
+    return <LoaderItem>Loading...</LoaderItem>;
+  }
+
   return (
     <>
-      {isLoading ? (
-        <LoaderItem>Loading...</LoaderItem>
-      ) : totalContactsAmount() > 0 ? (
+      {totalContactsAmount() > 0 ? (
         <>
           <TotalContactsText>
             Contacts in phone book:{' '}
@@ -88,17 +103,6 @@ export default function ContactList() {
           <NoContactsText>
             There are no contacts in your phone book
           </NoContactsText>
-        </>
-      )}
-
-      {isError && (
-        <>
-          <FetchErrorText>Fetch error! Refetch contacts</FetchErrorText>
-          <RefetchBtn type="button" onClick={() => refetch()}>
-            <IconContext.Provider value={{ size: '5em' }}>
-              <FaRedo />
-            </IconContext.Provider>
-          </RefetchBtn>
         </>
       )}
     </>

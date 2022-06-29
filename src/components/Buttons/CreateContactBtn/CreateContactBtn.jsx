@@ -7,7 +7,7 @@ import {
   BtnMessage,
 } from './CreateContactBtn.styled';
 
-export default function CreateContactBtn({ onOpen }) {
+export function CreateContactBtn({ onOpen }) {
   return (
     <CreateWrapper>
       <CreateBtn type="button" onClick={onOpen}>

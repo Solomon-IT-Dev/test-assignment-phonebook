@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useDeleteContactMutation } from 'services/api';
 import { useModal } from 'hooks/useModal';
 import Modal from 'components/Modal';
-import EditForm from 'components/EditForm';
+import { EditForm } from 'components/Forms';
 import { showSuccessMessage, showErrorMessage } from 'helpers/notifications';
 import { FaTrashAlt, FaSpinner, FaUserEdit, FaMailchimp } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
@@ -46,7 +46,6 @@ export default function ContactItem({ id, name, phone, avatarURL }) {
             </IconContext.Provider>
           )}
         </ContactAvatarWrapper>
-
         <ContactInfoWrapper>
           <ContactItemName>{name}</ContactItemName>
           <ContactItemNum href={`tel:${phone}`}>{phone}</ContactItemNum>
