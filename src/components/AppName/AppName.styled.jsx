@@ -10,7 +10,7 @@ export const MainTitle = styled.h1`
   color: #3498db;
   text-shadow: 12px 14px 12px #000000b0;
 
-  @media (max-width: 576px) {
+  @media (min-width: 576px) and (max-width: 1023px) {
     letter-spacing: 26px;
     font-size: 70px;
   }
