@@ -10,7 +10,7 @@ import {
   ContactItemWrapper,
   ContactAvatarWrapper,
   Avatar,
-  ContactDataWrapper,
+  ContactInfoWrapper,
   ContactItemName,
   ContactItemNum,
   EditBtn,
@@ -47,10 +47,10 @@ export default function ContactItem({ id, name, phone, avatarURL }) {
           )}
         </ContactAvatarWrapper>
 
-        <ContactDataWrapper>
+        <ContactInfoWrapper>
           <ContactItemName>{name}</ContactItemName>
           <ContactItemNum href={`tel:${phone}`}>{phone}</ContactItemNum>
-        </ContactDataWrapper>
+        </ContactInfoWrapper>
 
         <EditBtn
           type="button"

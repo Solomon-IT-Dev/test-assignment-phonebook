@@ -32,17 +32,8 @@ export const Avatar = styled.img`
   height: 50px;
 `;
 
-export const ContactDataWrapper = styled.div`
-  width: 50px;
-  height: 50px;
-  margin-left: 20px;
-  border-radius: 50%;
-  border: 1px solid gray;
-  overflow: hidden;
-
-  @media screen and (min-width: 576px) and (max-width: 1023px) {
-    margin-left: 15px;
-  }
+export const ContactInfoWrapper = styled.div`
+  
 `;
 
 export const ContactItemName = styled.p`
