@@ -4,7 +4,7 @@ export const ContactItemWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* width: 640px; */
+  width: 300px;
   height: 72px;
   border: 1px solid darkgray;
   border-radius: 5px;
@@ -46,11 +46,6 @@ export const ContactInfoWrapper = styled.div`
   @media screen and (min-width: 576px) {
     display: flex;
     align-items: center;
-    margin-left: 10px;
-  }
-
-  @media screen and (min-width: 576px) and (max-width: 1023px) {
-    margin-left: 10px;
   }
 
   @media screen and (min-width: 1023px) {
@@ -60,6 +55,10 @@ export const ContactInfoWrapper = styled.div`
 
 export const ContactItemName = styled.p`
   font-size: 16px;
+
+  @media screen and (max-width: 576px) {
+    margin-bottom: 5px;
+  }
 
   @media screen and (min-width: 576px) and (max-width: 1023px) {
     width: 140px;
