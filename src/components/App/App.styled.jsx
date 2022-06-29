@@ -11,7 +11,7 @@ export const AppContainer = styled.div`
 export const AppContentLayout = styled.div`
   display: flex;
   flex-direction: column;
-  width: 720px;
+  max-width: 720px;
   margin: 0 auto 40px auto;
   padding: 20px;
   border-radius: 2px;

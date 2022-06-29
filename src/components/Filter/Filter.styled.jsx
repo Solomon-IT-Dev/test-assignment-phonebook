@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 
 export const FilterInput = styled.input`
-  width: 360px;
+  max-width: 360px;
+  width: 86%;
   margin: 10px auto 20px;
   padding: 6px 14px;
   font-size: 20px;

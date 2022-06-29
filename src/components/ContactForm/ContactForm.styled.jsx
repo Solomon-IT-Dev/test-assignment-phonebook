@@ -26,7 +26,6 @@ export const FormInputLabel = styled.label`
 `;
 
 export const FormInput = styled.input`
-  width: 300px;
   margin-top: 4px;
   padding: 4px;
   font-size: 16px;
