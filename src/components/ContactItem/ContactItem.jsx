@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useDeleteContactMutation } from 'services/api';
-import { useModal } from 'hooks/useModal';
+import useModal from 'hooks/useModal';
 import Modal from 'components/Modal';
 import { EditForm } from 'components/Forms';
 import { showSuccessMessage, showErrorMessage } from 'helpers/notifications';

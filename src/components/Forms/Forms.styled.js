@@ -8,7 +8,7 @@ export const ContactSubmitForm = styled.form`
 
 export const FormName = styled.h3`
   text-align: center;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 2px;

@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { useGetAllContactsQuery, useUpdateContactMutation } from 'services/api';
+import useForm from 'hooks/useForm';
 import { nanoid } from '@reduxjs/toolkit';
 import PropTypes from 'prop-types';
 import {
@@ -13,11 +13,19 @@ import {
   FormName,
   FormInputLabel,
   FormInput,
-} from './EditForm.styled';
+} from '../Forms.styled';
 
 export function EditForm({ handleModalClose, id, name, phone, avatarURL }) {
-  const [formState, setFormState] = useState({ name, phone, avatarURL });
-
+  const {
+    formData: updatingContact,
+    onChange,
+    formReset,
+  } = useForm({
+    id,
+    name,
+    phone,
+    avatarURL,
+  });
   const { data: contacts } = useGetAllContactsQuery();
   const [updateContact, { isLoading: isEditing }] = useUpdateContactMutation();
 
@@ -25,34 +33,16 @@ export function EditForm({ handleModalClose, id, name, phone, avatarURL }) {
   const phoneInputId = nanoid();
   const avatarURLInputId = nanoid();
 
-  const onChange = (name, value) => {
-    setFormState(prevState => ({ ...prevState, [name]: value }));
-  };
-
-  const onNameChange = evt => {
-    onChange(evt.currentTarget.name, evt.currentTarget.value);
-  };
-
-  const onPhoneChange = evt => {
-    onChange(evt.currentTarget.name, evt.currentTarget.value);
-  };
-
-  const onAvatarURLChange = evt => {
-    onChange(evt.currentTarget.name, evt.currentTarget.value);
-  };
-
-  const formReset = () => {
-    setFormState({});
-  };
-
   const onContactFormSubmit = async evt => {
     evt.preventDefault();
 
+    const { name, phone, avatarURL } = updatingContact;
+
     const contactDuplicate = contacts.find(
       contact =>
-        contact.name.toLowerCase() === formState.name.toLowerCase() &&
-        contact.phone === formState.phone &&
-        contact.avatarURL === formState.avatarURL
+        contact.name.toLowerCase() === name.toLowerCase() &&
+        contact.phone === phone &&
+        contact.avatarURL === avatarURL
     );
 
     if (contactDuplicate) {
@@ -60,15 +50,8 @@ export function EditForm({ handleModalClose, id, name, phone, avatarURL }) {
       return;
     }
 
-    const updatedContact = {
-      id,
-      name: formState.name,
-      phone: formState.phone,
-      avatarURL: formState.avatarURL,
-    };
-
     try {
-      await updateContact(updatedContact);
+      await updateContact(updatingContact);
       handleModalClose();
       showSuccessMessage('Contact is successfully updated');
     } catch (error) {
@@ -89,8 +72,8 @@ export function EditForm({ handleModalClose, id, name, phone, avatarURL }) {
           placeholder="Type name (required)"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          value={formState.name}
-          onChange={onNameChange}
+          value={updatingContact.name}
+          onChange={onChange}
           id={nameInputId}
           required
         />
@@ -103,8 +86,8 @@ export function EditForm({ handleModalClose, id, name, phone, avatarURL }) {
           placeholder="Type number (required)"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          value={formState.phone}
-          onChange={onPhoneChange}
+          value={updatingContact.phone}
+          onChange={onChange}
           id={phoneInputId}
           required
         />
@@ -117,8 +100,8 @@ export function EditForm({ handleModalClose, id, name, phone, avatarURL }) {
           placeholder="Put URL of avatar"
           pattern="(https?:\/\/.*\.(?:png|jpg|jpeg|gif|svg|webp))"
           title="Avatar URL must contain link to image with format such as jpg, jpeg, png, webp, svg or gif"
-          value={formState.avatarURL}
-          onChange={onAvatarURLChange}
+          value={updatingContact.avatarURL}
+          onChange={onChange}
           id={avatarURLInputId}
         />
       </FormInputLabel>
